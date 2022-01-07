@@ -2,8 +2,6 @@ import request from "./index";
 
 
 const options = {
-    // url: "https://pkmcdn2.huohua.cn/package/qa/biz-teacher-ui/tag/stable.json?v=1640771241520"
-    // url: "https://pkmcdn2.huohua.cn/package/qa/biz-teacher-ui/tag/stable.json"
     // url: 'http://49.232.205.124:8001/v2/signout'
     hostname: '49.232.205.124',
     port: 8001,
