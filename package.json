@@ -22,7 +22,8 @@
   },
   "scripts": {
     "start": "node build/src/index.js",
-    "test2": "node build/src/test.js",
+    "test1": "node build/src/test1-stream.js",
+    "test2": "node build/src/test2.js",
     "clean": "rimraf coverage build tmp",
     "prebuild": "npm run lint",
     "build": "tsc -p tsconfig.release.json",
@@ -35,6 +36,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@sindresorhus/is": "^4.2.1",
+    "form-data-encoder": "^1.7.1",
     "fs-extra": "^10.0.0",
     "p-cancelable": "^3.0.0",
     "tslib": "~2.3.1"
