@@ -1,6 +1,4 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const index_1 = require("./index");
+import request from "./index";
 const options = {
     url: 'https://t7.baidu.com/it/u=3165657288,4248157545&fm=193&f=GIF',
     headers: {
@@ -15,7 +13,7 @@ const options = {
         channel: "qa"
     }
 };
-const req = (0, index_1.default)(options);
+const req = request(options);
 req.then((response) => {
     console.log('Promise Mark ~~~~~~~~~~~~~~~~~~~~~~~~~~~');
     console.log(response.body);

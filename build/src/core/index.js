@@ -1,12 +1,10 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const tslib_1 = require("tslib");
-const http = require("node:http");
-const https = require("node:https");
-const node_stream_1 = require("node:stream");
-const is_1 = require("@sindresorhus/is");
-const form_data_encoder_1 = require("form-data-encoder");
-class Request extends node_stream_1.Duplex {
+import { __awaiter } from "tslib";
+import * as http from 'node:http';
+import * as https from 'node:https';
+import { Duplex } from 'node:stream';
+import is from '@sindresorhus/is';
+import { FormDataEncoder, isFormData } from 'form-data-encoder';
+export default class Request extends Duplex {
     constructor(options) {
         super();
         console.log('class Request constructor!');
@@ -67,31 +65,31 @@ class Request extends node_stream_1.Duplex {
     }
     _sendBody() {
         const { body } = this.options;
-        if (!is_1.default.undefined(body)) {
+        if (!is.undefined(body)) {
             this._writeRequest(body, undefined, () => {
                 console.log('');
             });
         }
     }
     _finalizeBody() {
-        return (0, tslib_1.__awaiter)(this, void 0, void 0, function* () {
+        return __awaiter(this, void 0, void 0, function* () {
             const { options } = this;
             const { headers } = options;
-            const isForm = !is_1.default.undefined(options.form);
-            const isJSON = !is_1.default.undefined(options.json);
-            const isBody = !is_1.default.undefined(options.body);
+            const isForm = !is.undefined(options.form);
+            const isJSON = !is.undefined(options.json);
+            const isBody = !is.undefined(options.body);
             if (isForm || isJSON || isBody) {
-                const noContentType = !is_1.default.string(headers['content-type']);
+                const noContentType = !is.string(headers['content-type']);
                 if (isBody) {
-                    if ((0, form_data_encoder_1.isFormData)(options.body)) {
-                        const encoder = new form_data_encoder_1.FormDataEncoder(options.body);
+                    if (isFormData(options.body)) {
+                        const encoder = new FormDataEncoder(options.body);
                         if (noContentType) {
                             headers['content-type'] = encoder.headers['Content-Type'];
                         }
                         headers['content-length'] = encoder.headers['Content-Length'];
                         options.body = encoder.encode();
                     }
-                    if ((0, form_data_encoder_1.isFormData)(options.body) && noContentType) {
+                    if (isFormData(options.body) && noContentType) {
                         headers['content-type'] = `multipart/form-data; boundary=${options.body.getBoundary()}`;
                     }
                 }
@@ -163,7 +161,7 @@ class Request extends node_stream_1.Duplex {
     }
     flush() {
         var _a;
-        return (0, tslib_1.__awaiter)(this, void 0, void 0, function* () {
+        return __awaiter(this, void 0, void 0, function* () {
             if (this._flushed) {
                 return;
             }
@@ -203,12 +201,12 @@ class Request extends node_stream_1.Duplex {
     }
     _destroy(error, callback) {
         this._stopReading = true;
-        this.flush = () => (0, tslib_1.__awaiter)(this, void 0, void 0, function* () {
+        this.flush = () => __awaiter(this, void 0, void 0, function* () {
             console.log('');
         });
         if (this.options) {
             const { body } = this.options;
-            if (is_1.default.nodeStream(body)) {
+            if (is.nodeStream(body)) {
                 body.destroy();
             }
         }
@@ -242,5 +240,4 @@ class Request extends node_stream_1.Duplex {
         };
     }
 }
-exports.default = Request;
 //# sourceMappingURL=index.js.map

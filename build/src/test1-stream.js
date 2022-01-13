@@ -1,9 +1,7 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const index_1 = require("./index");
-const fse = require("fs-extra");
-const node_util_1 = require("node:util");
-const stream = require("node:stream");
+import request from "./index";
+import * as fse from 'fs-extra';
+import { promisify } from 'node:util';
+import * as stream from 'node:stream';
 const options = {
     headers: {
         'Content-Type': 'application/json',
@@ -17,8 +15,8 @@ const options = {
         channel: "qa"
     }
 };
-const pipeline = (0, node_util_1.promisify)(stream.pipeline);
-const req = (0, index_1.default)(options);
+const pipeline = promisify(stream.pipeline);
+const req = request(options);
 const path = `C:\\Users\\Pete\\Pictures\\1122-1636780.exe`;
 fse.ensureFileSync(path);
 const writeStream = fse.createWriteStream(path, {

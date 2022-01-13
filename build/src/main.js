@@ -1,20 +1,16 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.greeter = exports.Delays = void 0;
-const tslib_1 = require("tslib");
-var Delays;
+import { __awaiter } from "tslib";
+export var Delays;
 (function (Delays) {
     Delays[Delays["Short"] = 500] = "Short";
     Delays[Delays["Medium"] = 2000] = "Medium";
     Delays[Delays["Long"] = 5000] = "Long";
-})(Delays = exports.Delays || (exports.Delays = {}));
+})(Delays || (Delays = {}));
 function delayedHello(name, delay = Delays.Medium) {
     return new Promise((resolve) => setTimeout(() => resolve(`Hello, ${name}`), delay));
 }
-function greeter(name) {
-    return (0, tslib_1.__awaiter)(this, void 0, void 0, function* () {
+export function greeter(name) {
+    return __awaiter(this, void 0, void 0, function* () {
         return yield delayedHello(name, Delays.Long);
     });
 }
-exports.greeter = greeter;
 //# sourceMappingURL=main.js.map

@@ -1,10 +1,8 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("../core");
-const fse = require("fs-extra");
-function asPromise(options = {}) {
+import Request from '../core';
+import * as fse from 'fs-extra';
+export default function asPromise(options = {}) {
     const promise = new Promise((resolve, reject) => {
-        const request = new core_1.default(options);
+        const request = new Request(options);
         console.log('Mark 44444444');
         let body = '';
         request.on('response', (response) => {
@@ -41,5 +39,4 @@ function asPromise(options = {}) {
     });
     return promise;
 }
-exports.default = asPromise;
 //# sourceMappingURL=index.js.map

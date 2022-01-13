@@ -1,8 +1,6 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const core_1 = require("./core");
-const as_promise_1 = require("./as-promise");
-function request(options) {
+import Request from './core';
+import asPromise from './as-promise';
+export default function request(options) {
     if (!options) {
         throw new Error('options不能为空');
     }
@@ -13,11 +11,10 @@ function request(options) {
         options.headers = {};
     }
     if (options.isStream) {
-        return new core_1.default(options);
+        return new Request(options);
     }
     else {
-        return (0, as_promise_1.default)(options);
+        return asPromise(options);
     }
 }
-exports.default = request;
 //# sourceMappingURL=index.js.map
