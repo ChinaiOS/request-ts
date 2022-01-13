@@ -1,12 +1,13 @@
 {
   "name": "request-ts",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
   "engines": {
     "node": ">= 16.13 <17"
   },
   "main": "build/src/index.js",
   "module": "build/src/index.js",
+  "type": "module",
   "devDependencies": {
     "@types/jest": "~27.0.2",
     "@types/node": "~16.11.6",
