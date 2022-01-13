@@ -1,5 +1,5 @@
-import Request from './core';
-import asPromise from './as-promise';
+import Request from './core/index.js';
+import asPromise from './as-promise/index.js';
 export default function request(options) {
     if (!options) {
         throw new Error('options不能为空');

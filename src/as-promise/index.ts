@@ -1,5 +1,5 @@
-import Request from '../core';
-import * as fse from 'fs-extra';
+import Request from '../core/index.js';
+import fse from 'fs-extra';
 
 export default function asPromise<T>(options: any= {} ): Promise<T>  {
 	const promise = new Promise<T>((resolve, reject) => {

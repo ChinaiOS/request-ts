@@ -1,13 +1,26 @@
 {
   "name": "request-ts",
-  "version": "0.0.5",
-  "description": "Minimalistic boilerplate to quick-start Node.js development in TypeScript.",
+  "version": "0.0.6",
+  "description": "nodejs网络库request的ts版本",
   "engines": {
     "node": ">= 16.13 <17"
   },
   "main": "build/src/index.js",
-  "module": "build/src/index.js",
   "type": "module",
+  "author": "xinghuo",
+  "license": "MIT",
+  "scripts": {
+    "start": "node build/src/index.js",
+    "test1": "node build/src/test1-stream.js",
+    "test2": "node build/src/test2.js",
+    "clean": "rimraf coverage build tmp",
+    "prebuild": "npm run lint",
+    "build": "tsc -p tsconfig.release.json",
+    "build:watch": "tsc -w -p tsconfig.release.json",
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
   "devDependencies": {
     "@types/jest": "~27.0.2",
     "@types/node": "~16.11.6",
@@ -23,20 +36,6 @@
     "tsutils": "~3.21.0",
     "typescript": "~4.5.3"
   },
-  "scripts": {
-    "start": "node build/src/index.js",
-    "test1": "node build/src/test1-stream.js",
-    "test2": "node build/src/test2.js",
-    "clean": "rimraf coverage build tmp",
-    "prebuild": "npm run lint",
-    "build": "tsc -p tsconfig.release.json",
-    "build:watch": "tsc -w -p tsconfig.release.json",
-    "lint": "eslint . --ext .ts,.tsx",
-    "test": "jest --coverage",
-    "test:watch": "jest --watch"
-  },
-  "author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
-  "license": "Apache-2.0",
   "dependencies": {
     "@sindresorhus/is": "^4.2.1",
     "form-data-encoder": "^1.7.1",

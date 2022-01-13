@@ -1,9 +1,6 @@
 
 import * as http from 'node:http';
-// const https = require('https');
 import * as https from 'node:https';
-// import * as fse from 'fs-extra';
-// import * as eventEmitter from 'node:events';
 import { Duplex } from 'node:stream';
 import is from '@sindresorhus/is';
 import { FormDataEncoder, isFormData } from 'form-data-encoder';
