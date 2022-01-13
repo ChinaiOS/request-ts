@@ -188,7 +188,9 @@ export default class Request extends Duplex {
 			// this._unlockWrite();
 
         if (!is.undefined(body)) {
-            this._writeRequest(body, undefined, () => {});
+            this._writeRequest(body, undefined, () => {
+                console.log('');
+            });
             // currentRequest.end();
 
             // this._lockWrite();
@@ -520,7 +522,9 @@ export default class Request extends Duplex {
 
     override _destroy(error: Error | null, callback: (error: Error | null) => void): void {
 		this._stopReading = true;
-		this.flush = async () => {};
+        this.flush = async () => {
+            console.log('');
+        };
 
 		// Prevent further retries
 		// this._stopRetry();
